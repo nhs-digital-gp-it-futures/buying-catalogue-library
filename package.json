@@ -12,6 +12,15 @@
   },
   "author": "Fawad Ali",
   "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "^24.8.0"
+  },
+  "files": [
+    "src/*"
+  ],
   "bugs": {
     "url": "https://github.com/nhs-digital-gp-it-futures/buying-catalogue-library/issues"
   },
