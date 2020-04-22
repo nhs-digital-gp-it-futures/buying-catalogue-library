@@ -20,9 +20,6 @@ jobs:
     - name: Running npm install
       run: npm install
 
-    - name: Running npm run test
-      run: npm run test
-
     - run: npm publish
       env: 
         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
