@@ -1,6 +1,6 @@
 {
   "name": "buying-catalogue-library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library for buying-catalogue front end apps",
   "main": "index.js",
   "scripts": {
