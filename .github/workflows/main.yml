@@ -1,13 +1,13 @@
 name: publish to NPM
 
-on: 
+on:
   push:
     branches:
       - master
 
 jobs:
   build:
-    
+
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +20,9 @@ jobs:
     - name: Running npm install
       run: npm install
 
+    - name: Running npm build
+      run: npm run build
+
     - run: npm publish
-      env: 
+      env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

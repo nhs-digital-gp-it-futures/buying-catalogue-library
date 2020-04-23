@@ -1,4 +1,6 @@
-module.exports = class FakeAuthProvider {
+import { ErrorContext } from '../../models/errorContext';
+
+export class FakeAuthProvider {
   // eslint-disable-next-line no-useless-constructor, no-empty-function
   constructor(fakeLogoutMethod = () => {}) {
     this.fakeLogout = fakeLogoutMethod;
@@ -42,8 +44,14 @@ module.exports = class FakeAuthProvider {
       } else if (req.user && claim && req.user[claim]) {
         next();
       } else {
-        throw new Error('Not authorised matey');
+        throw new ErrorContext({
+          status: 401,
+          title: 'You\'re not authorised to view this page',
+          description: 'You must be logged in as a buyer to access Buying Catalogue orders.',
+          backLinkHref: '/placeholder',
+          backLinkText: 'Back to homescreen',
+        });
       }
     };
   }
-};
+}

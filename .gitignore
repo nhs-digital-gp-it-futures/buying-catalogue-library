@@ -43,6 +43,7 @@ npm-debug.log*
 
 # Dependency directories
 node_modules/
+lib/
 jspm_packages/
 
 # Optional npm cache directory
@@ -63,6 +64,3 @@ jspm_packages/
 # System Files
 .DS_Store
 Thumbs.db
-
-# generated templates
-app/templates/
