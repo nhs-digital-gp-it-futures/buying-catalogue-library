@@ -2,9 +2,10 @@
   "name": "buying-catalogue-library",
   "version": "1.0.2",
   "description": "A library for buying-catalogue front end apps",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "prepublish": "babel src --out-dir lib"
+    "build:dev": "babel src --out-dir lib",
+    "build": "babel src --out-dir lib"
   },
   "repository": {
     "type": "git",
@@ -13,18 +14,16 @@
   "author": "Fawad Ali",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
-    "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/register": "^7.9.0",
-    "babel-loader": "^8.1.0",
+    "@babel/preset-env": "^7.9.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.20.1",
     "jest": "^24.8.0"
   },
   "files": [
-    "src/*"
+    "lib/*"
   ],
   "bugs": {
     "url": "https://github.com/nhs-digital-gp-it-futures/buying-catalogue-library/issues"
