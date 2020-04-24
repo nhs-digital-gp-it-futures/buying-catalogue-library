@@ -6,3 +6,4 @@ export { errorHandler } from './middleware/errorHandler';
 
 // Test Utils
 export { FakeAuthProvider } from './test-utils/fakeAuthProvider';
+export { testFunction } from './test-utils/testFunction';

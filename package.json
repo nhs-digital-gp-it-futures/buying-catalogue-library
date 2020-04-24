@@ -17,10 +17,14 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "cheerio": "^1.0.0-rc.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.20.1",
-    "jest": "^24.8.0"
+    "eslint-plugin-import": "^2.20.2",
+    "express": "^4.17.1",
+    "jest": "^24.8.0",
+    "nunjucks": "^3.2.1",
+    "supertest": "^4.0.2"
   },
   "files": [
     "lib/*"
