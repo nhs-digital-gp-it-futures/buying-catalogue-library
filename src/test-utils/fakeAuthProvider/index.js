@@ -46,10 +46,9 @@ export class FakeAuthProvider {
       } else {
         throw new ErrorContext({
           status: 401,
-          title: 'You\'re not authorised to view this page',
-          description: 'You must be logged in as a buyer to access Buying Catalogue orders.',
-          backLinkHref: '/placeholder',
-          backLinkText: 'Back to homescreen',
+          description: 'You are not authorised to view this page',
+          backLinkHref: '/',
+          backLinkText: 'Back to home page',
         });
       }
     };
