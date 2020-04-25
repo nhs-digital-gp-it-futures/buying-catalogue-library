@@ -11,7 +11,7 @@ const addConfig = ({ context, config }) => ({
   },
 });
 
-export const testFunction = ({
+export const createTestHarness = ({
   app, templateEngine, config, setup, done,
 }) => {
   const router = express.Router();
