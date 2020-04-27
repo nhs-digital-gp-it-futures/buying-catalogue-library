@@ -5,7 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "build:dev": "babel src --out-dir lib",
-    "build": "babel src --out-dir lib"
+    "build": "babel src --out-dir lib",
+    "lint": "npm run lint:js",
+    "lint:js": "eslint \"**/*.js\" --ignore-pattern node_modules/"
   },
   "repository": {
     "type": "git",
