@@ -23,7 +23,6 @@
     "eslint-plugin-import": "^2.20.2",
     "express": "^4.17.1",
     "jest": "^24.8.0",
-    "nunjucks": "^3.2.1",
     "supertest": "^4.0.2"
   },
   "files": [
