@@ -7,7 +7,8 @@
     "build:dev": "babel src --out-dir lib",
     "build": "babel src --out-dir lib",
     "lint": "npm run lint:js",
-    "lint:js": "eslint \"**/*.js\" --ignore-pattern node_modules/"
+    "lint:js": "eslint \"**/*.js\" --ignore-pattern node_modules/",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
