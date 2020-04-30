@@ -12,7 +12,7 @@ export const getData = async ({
     return response.data || null;
   } catch (err) {
     logger.error(`[GET] ${endpoint} ERROR: ${err}`);
-    throw new Error(err);
+    throw err;
   }
 };
 
@@ -26,7 +26,7 @@ export const postData = async ({
     return response;
   } catch (err) {
     logger.error(`[POST] ${endpoint} ERROR: ${err}`);
-    throw new Error(err);
+    throw err;
   }
 };
 
@@ -40,6 +40,6 @@ export const putData = async ({
     return true;
   } catch (err) {
     logger.error(`[PUT] ${endpoint} ERROR: ${err}`);
-    throw new Error(err);
+    throw err;
   }
 };
