@@ -43,3 +43,15 @@ export const putData = async ({
     throw err;
   }
 };
+
+export const getDocument = async ({
+  endpoint, logger,
+}) => {
+  try {
+    logger.info(`api called: [GET] document ${endpoint}`);
+    await axios.get(endpoint, { responseType: 'stream' });
+  } catch (err) {
+    logger.error(`[GET] document ${endpoint} ERROR: ${err}`);
+    throw err;
+  }
+};
