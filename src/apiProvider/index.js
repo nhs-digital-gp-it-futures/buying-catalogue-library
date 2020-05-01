@@ -5,25 +5,53 @@ const getHeaders = accessToken => (accessToken ? { headers: { Authorization: `Be
 export const getData = async ({
   endpoint, accessToken, logger,
 }) => {
-  logger.info(`api called: [GET] ${endpoint}`);
-
-  const response = await axios.get(endpoint, getHeaders(accessToken));
-  return response.data || null;
+  try {
+    logger.info(`api called: [GET] ${endpoint}`);
+    const response = await axios.get(endpoint, getHeaders(accessToken));
+    logger.info(`[GET] ${endpoint} successful`);
+    return response.data || null;
+  } catch (err) {
+    logger.error(`[GET] ${endpoint} ERROR: ${err}`);
+    throw err;
+  }
 };
 
 export const postData = async ({
   endpoint, body = {}, accessToken, logger,
 }) => {
-  logger.info(`api called: [POST] ${endpoint}: ${JSON.stringify(body)}`);
-
-  return axios.post(endpoint, body, getHeaders(accessToken));
+  try {
+    logger.info(`api called: [POST] ${endpoint}: ${JSON.stringify(body)}`);
+    const response = await axios.post(endpoint, body, getHeaders(accessToken));
+    logger.info(`[POST] ${endpoint} successful`);
+    return response;
+  } catch (err) {
+    logger.error(`[POST] ${endpoint} ERROR: ${err}`);
+    throw err;
+  }
 };
 
 export const putData = async ({
   endpoint, body = {}, accessToken, logger,
 }) => {
-  logger.info(`api called: [PUT] ${endpoint}: ${JSON.stringify(body)}`);
+  try {
+    logger.info(`api called: [PUT] ${endpoint}: ${JSON.stringify(body)}`);
+    await axios.put(endpoint, body, getHeaders(accessToken));
+    logger.info(`[PUT] ${endpoint} successful`);
+    return true;
+  } catch (err) {
+    logger.error(`[PUT] ${endpoint} ERROR: ${err}`);
+    throw err;
+  }
+};
 
-  await axios.put(endpoint, body, getHeaders(accessToken));
-  return true;
+export const getDocument = async ({
+  endpoint, logger,
+}) => {
+  try {
+    logger.info(`api called: [GET] document ${endpoint}`);
+    await axios.get(endpoint, { responseType: 'stream' });
+  } catch (err) {
+    logger.error(`[GET] document ${endpoint} ERROR: ${err}`);
+    throw err;
+  }
 };
