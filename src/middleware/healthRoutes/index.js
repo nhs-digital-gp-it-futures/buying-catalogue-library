@@ -23,10 +23,10 @@ const getReadyStatus = async ({ dependencies, logger }) => {
       return 'healthy';
     } catch (e) {
       if (dependency.critical) {
-        logger.error(`critical dependency ${dependency.name} is not healthy`);
+        logger.error(`critical dependency ${dependency.name} is unhealthy`);
         return 'unhealthy';
       }
-      logger.warn(`${dependency.name} is not healthy`);
+      logger.warn(`${dependency.name} is degraded`);
       return 'degraded';
     }
   });
