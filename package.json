@@ -32,6 +32,12 @@
   "files": [
     "lib/*"
   ],
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/lib/"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/nhs-digital-gp-it-futures/buying-catalogue-library/issues"
   },
