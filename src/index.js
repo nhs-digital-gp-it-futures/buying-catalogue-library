@@ -9,4 +9,6 @@ export { FakeAuthProvider } from './test-utils/fakeAuthProvider';
 export { createTestHarness } from './test-utils/createTestHarness';
 
 // API Provider
-export { getData, postData, putData } from './apiProvider';
+export {
+  getData, postData, putData, getDocument,
+} from './apiProvider';
