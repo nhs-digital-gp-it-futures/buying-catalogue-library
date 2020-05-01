@@ -4,9 +4,6 @@ import { healthRoutes } from './index';
 import { getData } from '../../apiProvider';
 
 jest.mock('../../apiProvider');
-// , () => ({
-//   getData: jest.fn(),
-// }));
 
 const mockLogger = {
   debug: () => {},
