@@ -19,5 +19,26 @@ healthRoutes({ router, dependencies, logger });
 
 ### params
 `router` - the router from your app.
-`dependencies` - a list of dependencies for your app. See the test for example of this.
+
+`dependencies` - an array of dependencies objects for your app. 
+Exampe of non critical dependency
+```javascript
+{
+  name: 'dependency name',
+  endpoint: 'http://some-endpoint',
+}
+```
+
+Exampe of critical dependency
+```javascript
+{
+  name: 'dependency name',
+  endpoint: 'http://some-endpoint',
+  critical: true
+}
+```
+
+If the dependency is critical for your app to run. Add the flag `critical: true`. This will return a status of `Unhealthy` if that dependency is not available.
+Otherwise `Degraded` is returned.
+
 `logger` - the logger from your app.
