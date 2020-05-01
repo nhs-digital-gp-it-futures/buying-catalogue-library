@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getData } from '../../apiProvider';
 
 export const status = {
   healthy: {
@@ -15,11 +15,10 @@ export const status = {
   },
 };
 
-
 const getReadyStatus = async ({ dependencies, logger }) => {
   const dependenciesPromises = await dependencies.map(async (dependency) => {
     try {
-      await axios.get(dependency.endpoint);
+      await getData({ endpoint: dependency.endpoint, logger });
       logger.info(`${dependency.name} is healthy`);
       return 'healthy';
     } catch (e) {
