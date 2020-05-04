@@ -49,7 +49,8 @@ export const getDocument = async ({
 }) => {
   try {
     logger.info(`api called: [GET] document ${endpoint}`);
-    await axios.get(endpoint, { responseType: 'stream' });
+    const documentResponse = await axios.get(endpoint, { responseType: 'stream' });
+    return documentResponse;
   } catch (err) {
     logger.error(`[GET] document ${endpoint} ERROR: ${err}`);
     throw err;
