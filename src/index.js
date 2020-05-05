@@ -1,9 +1,13 @@
+// Helpers
+export { isApiReady } from './helpers/isApiReady';
+
 // Models
 export { ErrorContext } from './models/errorContext';
 
 // Middleware
 export { errorHandler } from './middleware/errorHandler';
 export { healthRoutes } from './middleware/healthRoutes';
+export { AuthProvider } from './middleware/authProvider';
 
 // Test Utils
 export { FakeAuthProvider } from './test-utils/fakeAuthProvider';
