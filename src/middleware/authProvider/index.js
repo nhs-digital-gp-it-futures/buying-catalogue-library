@@ -6,10 +6,13 @@ import redis from 'redis';
 import connectRedis from 'connect-redis';
 
 export class AuthProvider {
-  constructor({ config, scopes, unauthenticatedError }) {
+  constructor({
+    config, scopes, unauthenticatedError, logger,
+  }) {
     this.passport = passport;
     this.config = config;
     this.unauthenticatedError = unauthenticatedError;
+    this.logger = logger;
 
     Issuer.discover(this.config.oidcBaseUri)
       .then((issuer) => {
@@ -104,11 +107,14 @@ export class AuthProvider {
   authorise({ claim } = {}) {
     return (req, res, next) => {
       if (!req.user) {
+        this.logger.info('User not logged in');
         req.headers.referer = `${req.originalUrl}`;
         this.login()(req, res, next);
       } else if (req.user && claim && req.user[claim]) {
+        this.logger.info('User is authorised');
         next();
       } else {
+        this.logger.warn('User is not authorised');
         throw this.unauthenticatedError;
       }
     };
