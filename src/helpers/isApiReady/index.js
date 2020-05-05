@@ -13,7 +13,7 @@ export const isApiReady = async ({
   } catch (err) {
     const nextAttempt = attempt + 1;
     const nextPollDuration = nextAttempt * pollDuration;
-    logger.error(`${apiName} is not ready - will poll again in ${nextAttempt} seconds`);
+    logger.warn(`${apiName} is not ready - will poll again in ${nextAttempt} seconds`);
     return setTimeoutPromise(nextPollDuration).then(() => isApiReady({
       attempt: nextAttempt, pollDuration, apiName, apiHealthEndpoint, logger,
     }));
