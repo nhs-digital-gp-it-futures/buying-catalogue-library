@@ -8,6 +8,7 @@ export { ErrorContext } from './models/errorContext';
 export { errorHandler } from './middleware/errorHandler';
 export { healthRoutes } from './middleware/healthRoutes';
 export { AuthProvider } from './middleware/authProvider';
+export { authenticationRoutes } from './middleware/authenticationRoutes';
 
 // Test Utils
 export { FakeAuthProvider } from './test-utils/fakeAuthProvider';
