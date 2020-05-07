@@ -44,6 +44,21 @@ export const putData = async ({
   }
 };
 
+export const patchData = async ({
+  endpoint, body = {}, accessToken, logger,
+}) => {
+  try {
+    logger.info(`api called: [PATCH] ${endpoint}: ${JSON.stringify(body)}`);
+    await axios.patch(endpoint, body, getHeaders(accessToken));
+    logger.info(`[PATCH] ${endpoint} successful`);
+    return true;
+  } catch (err) {
+    logger.error(`[PATCH] ${endpoint} ERROR: ${err}`);
+    throw err;
+  }
+};
+
+
 export const getDocument = async ({
   endpoint, logger,
 }) => {
