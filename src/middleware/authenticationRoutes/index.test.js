@@ -12,12 +12,19 @@ const setupTestApp = (mockLogoutMethod) => {
   return { app, router, authProvider };
 };
 
+const mockLogger = {
+  debug: () => {},
+  info: () => {},
+  warn: () => {},
+  error: () => {},
+};
+
 describe('GET /login', () => {
   it('should return the correct status and redirect to the login page when not authenticated', () => {
     const { app, router, authProvider } = setupTestApp();
 
     authenticationRoutes({
-      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path',
+      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path', logger: mockLogger,
     });
 
     return request(app)
@@ -36,7 +43,7 @@ describe('GET /logout', () => {
     const { app, router, authProvider } = setupTestApp(mockLogoutMethod);
 
     authenticationRoutes({
-      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path',
+      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path', logger: mockLogger,
     });
 
     return request(app)
@@ -55,7 +62,7 @@ describe('GET /signout-callback-oidc', () => {
     const { app, router, authProvider } = setupTestApp(mockLogoutMethod);
 
     authenticationRoutes({
-      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path',
+      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path', logger: mockLogger,
     });
 
     return request(app)
@@ -72,7 +79,7 @@ describe('GET /signout-callback-oidc', () => {
     const { app, router, authProvider } = setupTestApp(mockLogoutMethod);
 
     authenticationRoutes({
-      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path',
+      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path', logger: mockLogger,
     });
 
     request(app)
@@ -90,7 +97,7 @@ describe('GET /signout-callback-oidc', () => {
     const { app, router, authProvider } = setupTestApp(mockLogoutMethod);
 
     authenticationRoutes({
-      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path',
+      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path', logger: mockLogger,
     });
 
     return request(app)
