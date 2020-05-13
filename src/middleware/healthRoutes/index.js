@@ -1,6 +1,6 @@
 import { getData } from '../../apiProvider';
 
-export const status = {
+const status = {
   healthy: {
     code: 200,
     message: 'Healthy',
