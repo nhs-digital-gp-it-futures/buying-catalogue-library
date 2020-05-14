@@ -1,5 +1,6 @@
 // Helpers
 export { isApiReady } from './helpers/isApiReady';
+export { extractInnerText } from './helpers/extractInnerText';
 
 // Models
 export { ErrorContext } from './models/errorContext';
