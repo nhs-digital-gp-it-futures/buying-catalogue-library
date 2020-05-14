@@ -29,6 +29,23 @@ export const testAuthorisedGetPathForUnauthenticatedUser = ({
     expect(res.headers.location).toEqual(expectedRedirectPath);
   });
 
+export const testAuthorisedGetPathForUnauthorisedUser = ({
+  app,
+  pathToTest,
+  mockUnauthorisedCookie,
+  expectedPageId,
+  expectedPageMessage,
+}) => {
+  app
+    .get(pathToTest)
+    .set('Cookie', [mockUnauthorisedCookie])
+    .expect(200)
+    .then((res) => {
+      expect(res.text.includes(expectedPageId)).toEqual(true);
+      expect(res.text.includes(expectedPageMessage)).toEqual(true);
+    });
+};
+
 export const testPostPathWithoutCsrf = ({ app, pathToTest, mockAuthorisedCookie }) => app
   .post(pathToTest)
   .set('Cookie', [mockAuthorisedCookie])
