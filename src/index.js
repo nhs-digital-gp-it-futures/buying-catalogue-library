@@ -1,5 +1,8 @@
 // Helpers
 export { isApiReady } from './helpers/isApiReady';
+export {
+  formatErrors, addErrorsAndDataToManifest, formatAllErrors,
+} from './helpers/contextCreatorHelpers';
 
 // Models
 export { ErrorContext } from './models/errorContext';
@@ -14,13 +17,15 @@ export { authenticationRoutes } from './middleware/authenticationRoutes';
 export { FakeAuthProvider } from './test-utils/fakeAuthProvider';
 export { createTestHarness } from './test-utils/createTestHarness';
 export { extractInnerText } from './test-utils/extractInnerText';
+export {
+  getCsrfTokenFromGet,
+  testAuthorisedGetPathForUnauthenticatedUser,
+  testPostPathWithoutCsrf,
+  testAuthorisedPostPathForUnauthenticatedUser,
+  testAuthorisedPostPathForUnauthorisedUsers,
+} from './test-utils/routesTestHelpers';
 
 // API Provider
 export {
   getData, postData, putData, getDocument,
 } from './apiProvider';
-
-// Helpers
-export {
-  formatErrors, addErrorsAndDataToManifest, formatAllErrors,
-} from './helpers/contextCreatorHelpers';
