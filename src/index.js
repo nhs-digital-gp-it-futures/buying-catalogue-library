@@ -20,6 +20,7 @@ export { extractInnerText } from './test-utils/extractInnerText';
 export {
   getCsrfTokenFromGet,
   testAuthorisedGetPathForUnauthenticatedUser,
+  testAuthorisedGetPathForUnauthorisedUser,
   testPostPathWithoutCsrf,
   testAuthorisedPostPathForUnauthenticatedUser,
   testAuthorisedPostPathForUnauthorisedUsers,
