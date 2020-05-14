@@ -1,6 +1,5 @@
 // Helpers
 export { isApiReady } from './helpers/isApiReady';
-export { extractInnerText } from './helpers/extractInnerText';
 
 // Models
 export { ErrorContext } from './models/errorContext';
@@ -14,6 +13,7 @@ export { authenticationRoutes } from './middleware/authenticationRoutes';
 // Test Utils
 export { FakeAuthProvider } from './test-utils/fakeAuthProvider';
 export { createTestHarness } from './test-utils/createTestHarness';
+export { extractInnerText } from './test-utils/extractInnerText';
 
 // API Provider
 export {
