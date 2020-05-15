@@ -5,7 +5,7 @@ const extractCsrfToken = ({ res }) => {
   return $('[name=_csrf]').val();
 };
 
-export const getCsrfTokenFromGet = async ({ app, csrfPagePath, mockAuthorisedCookie }) => {
+export const getCsrfTokenFromGet = async ({ app, csrfPagePath, mockAuthorisedCookie = '' }) => {
   let cookies;
   let csrfToken;
 
