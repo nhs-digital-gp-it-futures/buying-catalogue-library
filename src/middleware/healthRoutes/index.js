@@ -18,8 +18,8 @@ const status = {
 const getReadyStatus = async ({ dependencies, logger }) => {
   const dependenciesPromises = await dependencies.map(async (dependency) => {
     try {
-      await getData({ endpoint: dependency.endpoint, logger });
-      logger.info(`${dependency.name} is healthy`);
+      await getData({ endpoint: dependency.endpoint, logger, showLogs: false });
+      logger.debug(`${dependency.name} is healthy`);
       return 'healthy';
     } catch (e) {
       if (dependency.critical) {
