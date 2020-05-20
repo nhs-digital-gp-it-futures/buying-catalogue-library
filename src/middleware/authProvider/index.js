@@ -110,7 +110,7 @@ export class AuthProvider {
         this.logger.info('User not logged in');
         req.headers.referer = `${req.originalUrl}`;
         this.login()(req, res, next);
-      } else if (req.user && claim && req.user[claim] && req.user[claim] === 'manage') {
+      } else if (req.user && claim && req.user[claim] && req.user[claim].toLowerCase() === 'manage') {
         this.logger.info('User is authorised');
         next();
       } else {
