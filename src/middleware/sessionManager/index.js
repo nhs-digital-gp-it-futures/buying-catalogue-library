@@ -8,7 +8,7 @@ export const sessionManager = ({ logger }) => ({
   getFromSession: ({ req, key }) => {
     logger.debug(`Getting from session ${key}`);
     const valueFromSession = req.session[key];
-    logger.debug(`get from ${key} successfully`);
+    logger.debug(`Get from ${key} successfull`);
     return valueFromSession;
   },
 });
