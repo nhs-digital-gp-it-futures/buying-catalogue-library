@@ -3,12 +3,12 @@ import axios from 'axios';
 const getHeaders = accessToken => (accessToken ? { headers: { Authorization: `Bearer ${accessToken}` } } : {});
 
 export const getData = async ({
-  endpoint, accessToken, logger,
+  endpoint, accessToken, logger, showLogs = true,
 }) => {
   try {
-    logger.info(`api called: [GET] ${endpoint}`);
+    if (showLogs) logger.info(`api called: [GET] ${endpoint}`);
     const response = await axios.get(endpoint, getHeaders(accessToken));
-    logger.info(`[GET] ${endpoint} successful`);
+    if (showLogs) logger.info(`[GET] ${endpoint} successful`);
     return response.data || null;
   } catch (err) {
     logger.error(`[GET] ${endpoint} ERROR: ${err}`);

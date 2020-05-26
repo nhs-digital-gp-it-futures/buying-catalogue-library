@@ -41,7 +41,7 @@ export class FakeAuthProvider {
     return (req, res, next) => {
       if (!req.user) {
         this.login()(req, res, next);
-      } else if (req.user && claim && req.user[claim]) {
+      } else if (req.user && claim && req.user[claim] && req.user[claim].toLowerCase() === 'manage') {
         next();
       } else {
         throw new ErrorContext({
