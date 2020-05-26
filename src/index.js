@@ -12,6 +12,7 @@ export { errorHandler } from './middleware/errorHandler';
 export { healthRoutes } from './middleware/healthRoutes';
 export { AuthProvider } from './middleware/authProvider';
 export { authenticationRoutes } from './middleware/authenticationRoutes';
+export { sessionManager } from './middleware/sessionManager';
 
 // Test Utils
 export { FakeAuthProvider } from './test-utils/fakeAuthProvider';
@@ -25,6 +26,7 @@ export {
   testAuthorisedPostPathForUnauthenticatedUser,
   testAuthorisedPostPathForUnauthorisedUsers,
 } from './test-utils/routesTestHelpers';
+export { fakeSessionManager } from './test-utils/fakeSessionManager';
 
 // API Provider
 export {
