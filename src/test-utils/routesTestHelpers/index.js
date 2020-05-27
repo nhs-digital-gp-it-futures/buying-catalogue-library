@@ -22,9 +22,9 @@ export const getCsrfTokenFromGet = async ({
 };
 
 export const testAuthorisedGetPathForUnauthenticatedUser = ({
-  app, pathToTest, expectedRedirectPath,
+  app, getPath, expectedRedirectPath,
 }) => app
-  .get(pathToTest)
+  .get(getPath)
   .expect(302)
   .then((res) => {
     expect(res.redirect).toEqual(true);
@@ -33,14 +33,14 @@ export const testAuthorisedGetPathForUnauthenticatedUser = ({
 
 export const testAuthorisedGetPathForUnauthorisedUser = ({
   app,
-  pathToTest,
-  mockUnauthorisedCookie,
+  getPath,
+  getPathCookies,
   expectedPageId,
   expectedPageMessage,
 }) => {
   app
-    .get(pathToTest)
-    .set('Cookie', [mockUnauthorisedCookie])
+    .get(getPath)
+    .set('Cookie', getPathCookies)
     .expect(200)
     .then((res) => {
       expect(res.text.includes(expectedPageId)).toEqual(true);
@@ -48,9 +48,9 @@ export const testAuthorisedGetPathForUnauthorisedUser = ({
     });
 };
 
-export const testPostPathWithoutCsrf = ({ app, pathToTest, mockAuthorisedCookie }) => app
-  .post(pathToTest)
-  .set('Cookie', [mockAuthorisedCookie])
+export const testPostPathWithoutCsrf = ({ app, postPath, postPathCookies }) => app
+  .post(postPath)
+  .set('Cookie', postPathCookies)
   .type('form')
   .send({})
   .then((res) => {
