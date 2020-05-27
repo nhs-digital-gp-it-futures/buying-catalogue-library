@@ -6,14 +6,14 @@ const extractCsrfToken = ({ res }) => {
 };
 
 export const getCsrfTokenFromGet = async ({
-  app, csrfPagePath, cookies: cookiesFromParams = [],
+  app, getPath, getPathCookies = [],
 }) => {
   let cookies;
   let csrfToken;
 
   await app
-    .get(csrfPagePath)
-    .set('Cookie', cookiesFromParams)
+    .get(getPath)
+    .set('Cookie', getPathCookies)
     .then((getRes) => {
       cookies = getRes.headers['set-cookie'];
       csrfToken = extractCsrfToken(getRes);
@@ -61,7 +61,7 @@ export const testAuthorisedPostPathForUnauthenticatedUser = async ({
   app, getPath, postPath, getPathCookies, postPathCookies, expectedRedirectPath,
 }) => {
   const { cookies, csrfToken } = await getCsrfTokenFromGet({
-    app, csrfPagePath: getPath, cookies: getPathCookies,
+    app, getPath, getPathCookies,
   });
   return app
     .post(postPath)
@@ -87,7 +87,7 @@ export const testAuthorisedPostPathForUnauthorisedUsers = async ({
   expectedPageMessage,
 }) => {
   const { cookies, csrfToken } = await getCsrfTokenFromGet({
-    app, csrfPagePath: getPath, cookies: getPathCookies,
+    app, getPath, getPathCookies,
   });
 
   return app
