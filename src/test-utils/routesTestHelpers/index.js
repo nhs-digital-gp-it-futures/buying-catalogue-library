@@ -79,21 +79,21 @@ export const testAuthorisedPostPathForUnauthenticatedUser = async ({
 
 export const testAuthorisedPostPathForUnauthorisedUsers = async ({
   app,
-  csrfPagePath,
-  pathToTest,
-  mockAuthorisedCookie,
-  mockUnauthorisedCookie,
+  getPath,
+  postPath,
+  getPathCookies,
+  postPathCookies,
   expectedPageId,
   expectedPageMessage,
 }) => {
   const { cookies, csrfToken } = await getCsrfTokenFromGet({
-    app, csrfPagePath, cookies: [mockAuthorisedCookie],
+    app, csrfPagePath: getPath, cookies: getPathCookies,
   });
 
   return app
-    .post(pathToTest)
+    .post(postPath)
     .type('form')
-    .set('Cookie', [cookies, mockUnauthorisedCookie])
+    .set('Cookie', [cookies, ...postPathCookies])
     .send({ _csrf: csrfToken })
     .expect(200)
     .then((res) => {
