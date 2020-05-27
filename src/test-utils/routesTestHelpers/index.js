@@ -5,13 +5,15 @@ const extractCsrfToken = ({ res }) => {
   return $('[name=_csrf]').val();
 };
 
-export const getCsrfTokenFromGet = async ({ app, csrfPagePath, mockAuthorisedCookie = '' }) => {
+export const getCsrfTokenFromGet = async ({
+  app, csrfPagePath, cookies: cookiesFromParams = [],
+}) => {
   let cookies;
   let csrfToken;
 
   await app
     .get(csrfPagePath)
-    .set('Cookie', mockAuthorisedCookie)
+    .set('Cookie', cookiesFromParams)
     .then((getRes) => {
       cookies = getRes.headers['set-cookie'];
       csrfToken = extractCsrfToken(getRes);
@@ -56,15 +58,15 @@ export const testPostPathWithoutCsrf = ({ app, pathToTest, mockAuthorisedCookie 
   });
 
 export const testAuthorisedPostPathForUnauthenticatedUser = async ({
-  app, csrfPagePath, pathToTest, mockAuthorisedCookie, expectedRedirectPath,
+  app, getPath, postPath, getPathCookies, postPathCookies, expectedRedirectPath,
 }) => {
   const { cookies, csrfToken } = await getCsrfTokenFromGet({
-    app, csrfPagePath, mockAuthorisedCookie,
+    app, csrfPagePath: getPath, cookies: getPathCookies,
   });
   return app
-    .post(pathToTest)
+    .post(postPath)
     .type('form')
-    .set('Cookie', [cookies])
+    .set('Cookie', [cookies, ...postPathCookies])
     .send({
       _csrf: csrfToken,
     })
@@ -85,7 +87,7 @@ export const testAuthorisedPostPathForUnauthorisedUsers = async ({
   expectedPageMessage,
 }) => {
   const { cookies, csrfToken } = await getCsrfTokenFromGet({
-    app, csrfPagePath, mockAuthorisedCookie,
+    app, csrfPagePath, cookies: [mockAuthorisedCookie],
   });
 
   return app
