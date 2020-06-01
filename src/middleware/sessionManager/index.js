@@ -11,4 +11,14 @@ export const sessionManager = ({ logger }) => ({
     logger.debug(`Get for ${key} successful`);
     return valueFromSession;
   },
+
+  clearFromSession: ({ req, keys }) => {
+    logger.debug(`Clearing from session ${keys}`);
+
+    keys.map((key) => {
+      req.session[key] = undefined;
+    });
+
+    logger.debug('cleared from session successful');
+  },
 });

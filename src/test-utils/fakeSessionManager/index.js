@@ -10,4 +10,5 @@ export const fakeSessionManager = () => ({
     }
     return undefined;
   },
+  clearFromSession: () => {},
 });
