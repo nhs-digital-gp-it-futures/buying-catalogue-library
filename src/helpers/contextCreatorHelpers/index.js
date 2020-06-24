@@ -25,6 +25,29 @@ export const addErrorsAndDataToManifestKeyValuePair = ({ manifest, errors, data 
   }),
 });
 
+export const addErrorsAndDataToManifestKeyValuePair2 = ({ manifest, errors, data }) => {
+  const { questionsAcc: modifiedQuestions } = manifest.questions
+    ? Object.entries(manifest.questions)
+      .reduce(({ questionsAcc }, [questionId, questionManifest]) => {
+        return {
+          questionsAcc: {
+            ...questionsAcc,
+            [questionId]: {
+              ...questionManifest,
+              data: data && data[questionId] ? data[questionId] : undefined,
+            },
+          },
+        };
+      }, { questionsAcc: {} })
+    : { questionsAcc: undefined };
+
+  return ({
+    ...manifest,
+    questions: modifiedQuestions,
+  });
+};
+
+
 export const formatAllErrors = questionsWithErrors => questionsWithErrors.reduce(
   (acc, question) => {
     if (question.error) {

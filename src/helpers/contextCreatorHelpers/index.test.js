@@ -1,5 +1,5 @@
 import {
-  formatErrors, formatAllErrors, addErrorsAndDataToManifest, addErrorsAndDataToManifestKeyValuePair,
+  formatErrors, formatAllErrors, addErrorsAndDataToManifest, addErrorsAndDataToManifestKeyValuePair, addErrorsAndDataToManifestKeyValuePair2,
 } from '.';
 
 const manifest = {
@@ -142,6 +142,82 @@ describe('contextCreatorErrorHelper', () => {
       expect(manifestWithErrors.questions[0].data).toEqual('Data for q1');
       expect(manifestWithErrors.questions[1].data).toEqual(undefined);
       expect(manifestWithErrors.questions[2].data).toEqual('Data for q3');
+    });
+  });
+
+  describe('addErrorsAndDataToManifestKeyValuePair 2', () => {
+    it('should return the manifest as provided', () => {
+      const manifestProvided = { title: 'some title' };
+
+      const modifiedManifest = addErrorsAndDataToManifestKeyValuePair2({ manifest: manifestProvided });
+
+      expect(modifiedManifest).toEqual(manifestProvided);
+    });
+
+    it('should return the questions in the manifest with the data provided', () => {
+      const expectedManifest2 = {
+        title: 'some title',
+        questions: {
+          question1: {
+            title: 'Question One',
+            data: 'Data for q1',
+          },
+        },
+      };
+
+      const manifestProvided = {
+        title: 'some title',
+        questions: {
+          question1: {
+            title: 'Question One',
+          },
+        },
+      };
+
+      const data = {
+        question1: 'Data for q1',
+      };
+
+      const modifiedManifest = addErrorsAndDataToManifestKeyValuePair2({ manifest: manifestProvided, data });
+
+      expect(modifiedManifest).toEqual(expectedManifest2);
+    });
+
+    it('should return multiple questions in the manifest with the multiple data provided', () => {
+      const expectedManifest2 = {
+        title: 'some title',
+        questions: {
+          question1: {
+            title: 'Question One',
+            data: 'Data for q1',
+          },
+          question2: {
+            title: 'Question Two',
+            data: 'Data for q2',
+          },
+        },
+      };
+
+      const manifestProvided = {
+        title: 'some title',
+        questions: {
+          question1: {
+            title: 'Question One',
+          },
+          question2: {
+            title: 'Question Two',
+          },
+        },
+      };
+
+      const data = {
+        question1: 'Data for q1',
+        question2: 'Data for q2',
+      };
+
+      const modifiedManifest = addErrorsAndDataToManifestKeyValuePair2({ manifest: manifestProvided, data });
+
+      expect(modifiedManifest).toEqual(expectedManifest2);
     });
   });
 
