@@ -15,6 +15,16 @@ export const addErrorsAndDataToManifest = ({ manifest, errors, data }) => ({
   }),
 });
 
+export const addErrorsAndDataToManifestKeyValuePair = ({ manifest, errors, data }) => ({
+  ...manifest,
+  questions: Object.entries(manifest.questions).map((question) => {
+    const modifiedQuestion = { ...question[1] };
+    if (errors[question[1].id]) modifiedQuestion.error = { message: errors[question[1].id].join(', ') };
+    if (data && data[question[1].id]) modifiedQuestion.data = data[question[1].id];
+    return modifiedQuestion;
+  }),
+});
+
 export const formatAllErrors = questionsWithErrors => questionsWithErrors.reduce(
   (acc, question) => {
     if (question.error) {
