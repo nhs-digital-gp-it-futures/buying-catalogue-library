@@ -77,7 +77,7 @@ describe('contextCreatorErrorHelper', () => {
   });
 
   describe('addErrorsAndDataToManifestKeyValuePair', () => {
-    const manifestNoneArrayQuestions = {
+    const manifestKeyValueQuestions = {
       title: 'Title of page',
       questions: {
         question1: {
@@ -99,32 +99,32 @@ describe('contextCreatorErrorHelper', () => {
         Field2Required: 'Field 2 is required',
       },
     };
-    const formattedErrors = formatErrors({ manifest: manifestNoneArrayQuestions, errors });
+    const formattedErrors = formatErrors({ manifest: manifestKeyValueQuestions, errors });
     it('should return the contents of the manifest', () => {
       const manifestWithErrors = addErrorsAndDataToManifestKeyValuePair(
-        { manifest, errors: formattedErrors },
+        { manifest: manifestKeyValueQuestions, errors: formattedErrors },
       );
-      expect(manifestWithErrors.title).toEqual(manifestNoneArrayQuestions.title);
+      expect(manifestWithErrors.title).toEqual(manifestKeyValueQuestions.title);
 
       expect(manifestWithErrors.questions[0].id)
-        .toEqual(manifestNoneArrayQuestions.questions.question1.id);
+        .toEqual(manifestKeyValueQuestions.questions.question1.id);
       expect(manifestWithErrors.questions[0].id.text)
-        .toEqual(manifestNoneArrayQuestions.questions.question1.text);
+        .toEqual(manifestKeyValueQuestions.questions.question1.text);
 
       expect(manifestWithErrors.questions[1].id)
-        .toEqual(manifestNoneArrayQuestions.questions.question2.id);
+        .toEqual(manifestKeyValueQuestions.questions.question2.id);
       expect(manifestWithErrors.questions[1].id.text)
-        .toEqual(manifestNoneArrayQuestions.questions.question2.text);
+        .toEqual(manifestKeyValueQuestions.questions.question2.text);
 
       expect(manifestWithErrors.questions[2].id)
-        .toEqual(manifestNoneArrayQuestions.questions.question3.id);
+        .toEqual(manifestKeyValueQuestions.questions.question3.id);
       expect(manifestWithErrors.questions[2].id.text)
-        .toEqual(manifestNoneArrayQuestions.questions.question3.text);
+        .toEqual(manifestKeyValueQuestions.questions.question3.text);
     });
 
     it('should add the errors to the correct questions', () => {
       const manifestWithErrors = addErrorsAndDataToManifestKeyValuePair(
-        { manifest: manifestNoneArrayQuestions, errors: formattedErrors },
+        { manifest: manifestKeyValueQuestions, errors: formattedErrors },
       );
       expect(manifestWithErrors.questions[0].error).toEqual({ message: 'Field 1 is required, Field 1 is too long' });
       expect(manifestWithErrors.questions[1].error).toEqual({ message: 'Field 2 is required' });
@@ -137,7 +137,7 @@ describe('contextCreatorErrorHelper', () => {
         question3: 'Data for q3',
       };
       const manifestWithErrors = addErrorsAndDataToManifestKeyValuePair({
-        manifest: manifestNoneArrayQuestions, errors: formattedErrors, data,
+        manifest: manifestKeyValueQuestions, errors: formattedErrors, data,
       });
       expect(manifestWithErrors.questions[0].data).toEqual('Data for q1');
       expect(manifestWithErrors.questions[1].data).toEqual(undefined);
