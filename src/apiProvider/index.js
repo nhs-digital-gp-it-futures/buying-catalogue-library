@@ -13,13 +13,13 @@ export const deleteData = async ({
       logger.info(`api called: [DELETE] ${endpoint}`);
     }
 
-    const response = await axios.delete(endpoint, getHeaders(accessToken));
+    await axios.delete(endpoint, getHeaders(accessToken));
 
     if (showLogs) {
       logger.info(`[DELETE] ${endpoint} successful`);
     }
 
-    return response.data || null;
+    return true;
   } catch (err) {
     logger.error(`[DELETE] ${endpoint} ERROR: ${err}`);
     throw err;
