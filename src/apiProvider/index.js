@@ -2,6 +2,30 @@ import axios from 'axios';
 
 const getHeaders = accessToken => (accessToken ? { headers: { Authorization: `Bearer ${accessToken}` } } : {});
 
+export const deleteData = async ({
+  endpoint,
+  accessToken,
+  logger,
+  showLogs = true,
+}) => {
+  try {
+    if (showLogs) {
+      logger.info(`api called: [DELETE] ${endpoint}`);
+    }
+
+    const response = await axios.delete(endpoint, getHeaders(accessToken));
+
+    if (showLogs) {
+      logger.info(`[DELETE] ${endpoint} successful`);
+    }
+
+    return response.data || null;
+  } catch (err) {
+    logger.error(`[DELETE] ${endpoint} ERROR: ${err}`);
+    throw err;
+  }
+};
+
 export const getData = async ({
   endpoint, accessToken, logger, showLogs = true,
 }) => {
