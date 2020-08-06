@@ -30,5 +30,5 @@ export { fakeSessionManager } from './test-utils/fakeSessionManager';
 
 // API Provider
 export {
-  getData, postData, putData, getDocument,
+  deleteData, getData, postData, putData, getDocument,
 } from './apiProvider';
