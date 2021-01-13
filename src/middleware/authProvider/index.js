@@ -1,4 +1,3 @@
-import url from 'url';
 import passport from 'passport';
 import { Strategy, Issuer } from 'openid-client';
 import session from 'express-session';
@@ -78,7 +77,7 @@ export class AuthProvider {
   login() {
     return (req, res, next) => {
       const options = {
-        state: url.parse(req.headers.referer).pathname,
+        state: new URL(req.headers.referer).pathname,
       };
       this.passport.authenticate('oidc', options)(req, res, next);
     };
