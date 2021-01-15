@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getHeaders = accessToken => (accessToken ? { headers: { Authorization: `Bearer ${accessToken}` } } : {});
+const getHeaders = (accessToken) => (accessToken ? { headers: { Authorization: `Bearer ${accessToken}` } } : {});
 
 export const deleteData = async ({
   endpoint,
@@ -81,7 +81,6 @@ export const patchData = async ({
     throw err;
   }
 };
-
 
 export const getDocument = async ({
   endpoint, logger,
