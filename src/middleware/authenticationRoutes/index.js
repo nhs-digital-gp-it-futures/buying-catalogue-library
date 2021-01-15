@@ -27,8 +27,8 @@ export const authenticationRoutes = ({
 
     if (req.headers.cookie) {
       req.headers.cookie.split(';')
-        .map(cookie => cookie.split('=')[0])
-        .forEach(cookieKey => res.clearCookie(cookieKey));
+        .map((cookie) => cookie.split('=')[0])
+        .forEach((cookieKey) => res.clearCookie(cookieKey));
     }
 
     res.redirect(logoutRedirectPath);

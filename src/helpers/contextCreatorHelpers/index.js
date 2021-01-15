@@ -15,7 +15,7 @@ export const addErrorsAndDataToManifest = ({ manifest, errors, data }) => ({
   }),
 });
 
-export const formatAllErrors = questionsWithErrors => questionsWithErrors.reduce(
+export const formatAllErrors = (questionsWithErrors) => questionsWithErrors.reduce(
   (acc, question) => {
     if (question.error) {
       question.error.message.split(', ').forEach((errorString) => {
