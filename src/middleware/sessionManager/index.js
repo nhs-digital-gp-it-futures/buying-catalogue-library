@@ -1,6 +1,6 @@
 export const sessionManager = ({ logger }) => ({
   saveToSession: ({ req, key, value }) => {
-    logger.debug(`Saving to session ${key} with value ${value}`);
+    logger.debug(`Saving to session ${key} with value ${JSON.stringify(value)}`);
     req.session[key] = value;
     logger.debug(`Saved to session ${key} successful`);
   },
