@@ -19,7 +19,7 @@
   "dependencies": {
     "@babel/cli": "^7.12.13",
     "@babel/core": "^7.12.16",
-    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-env": "^7.12.16",
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.3",
     "connect-redis": "^5.1.0",
