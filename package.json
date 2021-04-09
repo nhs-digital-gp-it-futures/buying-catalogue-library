@@ -21,7 +21,7 @@
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
     "axios": "^0.21.1",
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "^1.0.0-rc.6",
     "connect-redis": "^5.1.0",
     "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
