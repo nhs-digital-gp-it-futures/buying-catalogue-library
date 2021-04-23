@@ -29,7 +29,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "jest": "^26.6.3",
-    "openid-client": "^4.6.0",
+    "openid-client": "^4.7.1",
     "passport": "^0.4.1",
     "redis": "^3.1.1",
     "supertest": "^6.1.3"
