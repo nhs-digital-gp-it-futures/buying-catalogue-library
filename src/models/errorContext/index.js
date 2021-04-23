@@ -6,6 +6,7 @@ export class ErrorContext {
     title,
     description,
     stackTrace,
+    data,
   }) {
     this.status = status || 400;
     this.backLinkText = backLinkText || 'Go to Home Page';
@@ -13,5 +14,6 @@ export class ErrorContext {
     this.title = title || 'Error';
     this.description = description || 'Something went wrong';
     this.stackTrace = stackTrace;
+    this.data = data;
   }
 }
