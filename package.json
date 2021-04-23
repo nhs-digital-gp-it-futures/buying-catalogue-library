@@ -17,7 +17,7 @@
   "author": "Fawad Ali",
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.13.14",
+    "@babel/cli": "^7.13.16",
     "@babel/core": "^7.13.16",
     "@babel/preset-env": "^7.13.15",
     "axios": "^0.21.1",
