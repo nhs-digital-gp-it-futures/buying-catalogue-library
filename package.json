@@ -1,6 +1,6 @@
 {
   "name": "buying-catalogue-library",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "A library for buying-catalogue front end apps",
   "main": "lib/index.js",
   "scripts": {
@@ -18,18 +18,18 @@
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.13.16",
-    "@babel/preset-env": "^7.13.15",
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
     "axios": "^0.21.1",
-    "cheerio": "^1.0.0-rc.6",
-    "connect-redis": "^5.1.0",
-    "eslint": "^7.25.0",
+    "cheerio": "^1.0.0-rc.9",
+    "connect-redis": "^5.2.0",
+    "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.20.2",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "jest": "^26.6.3",
-    "openid-client": "^4.7.2",
+    "openid-client": "^4.7.3",
     "passport": "^0.4.1",
     "redis": "^3.1.2",
     "supertest": "^6.1.3"
