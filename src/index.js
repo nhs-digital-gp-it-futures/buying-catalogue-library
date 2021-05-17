@@ -14,7 +14,7 @@ export { AuthProvider } from './middleware/authProvider';
 export { authenticationRoutes } from './middleware/authenticationRoutes';
 export { sessionManager } from './middleware/sessionManager';
 export { ConfigHelper } from './middleware/configKey';
-export { cookiePolicyAgreed, cookiePolicyClear } from './middleware/cookiePolicy';
+export { cookiePolicyAgreed, cookiePolicyExists, cookiePolicyClear } from './middleware/cookiePolicy';
 
 // Test Utils
 export { FakeAuthProvider } from './test-utils/fakeAuthProvider';
