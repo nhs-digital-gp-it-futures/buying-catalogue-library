@@ -8,6 +8,7 @@ export const cookiePolicyAgreed = ({ res, logger }) => {
 export const cookiePolicyExists = ({ req, logger }) => {
   const value = req.cookies[cookieName];
   logger.info(`get ${cookieName} cookie, has value ${value}`);
+  return value !== undefined;
 };
 
 export const cookiePolicyClear = ({ res, logger }) => {
