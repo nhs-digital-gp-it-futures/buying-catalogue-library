@@ -2,7 +2,12 @@ const cookieName = 'buyingcatalogue-cookie-consent';
 
 export const cookiePolicyAgreed = ({ res, logger }) => {
   const millisecondsInOneYear = 31556926000;
-  res.cookie(cookieName, 'true', { maxAge: millisecondsInOneYear });
+  const cookieData = {
+    cookieValue: true,
+    creationDate: new Date().getTime(),
+  };
+  res.cookie(cookieName, `${JSON.stringify(cookieData)}`, { maxAge: millisecondsInOneYear });
+
   logger.info(`creating ${cookieName} cookie`);
 };
 
