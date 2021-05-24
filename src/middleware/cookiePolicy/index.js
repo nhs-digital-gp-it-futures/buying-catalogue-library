@@ -1,4 +1,7 @@
+import config from '../../config';
+
 const cookieName = 'buyingcatalogue-cookie-consent';
+const currentTimeInMillisecods = new Date().getTime();
 
 export const cookiePolicyAgreed = ({ res, logger }) => {
   const millisecondsInOneYear = 31556926000;
@@ -20,4 +23,18 @@ export const cookiePolicyExists = ({ req, logger }) => {
 export const cookiePolicyClear = ({ res, logger }) => {
   res.clearCookie(cookieName);
   logger.info(`clear ${cookieName} cookie`);
+};
+
+export const consentCookieExpiration = ({ router, logger }) => {
+  if (config.buyingCatalogueCookiePolicyDate < currentTimeInMillisecods) {
+    router.use((req, res, next) => {
+      const value = req.cookies[cookieName] ? JSON.parse(req.cookies[cookieName]) : undefined;
+      if (value && value.creationDate && (
+        value.creationDate < config.buyingCatalogueCookiePolicyDate
+      )) {
+        cookiePolicyClear({ res, logger });
+      }
+      return next();
+    });
+  }
 };
