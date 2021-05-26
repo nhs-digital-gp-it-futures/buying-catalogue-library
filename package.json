@@ -28,7 +28,7 @@
     "eslint-plugin-import": "^2.23.3",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "jest": "^26.6.3",
+    "jest": "^27.0.1",
     "openid-client": "^4.7.3",
     "passport": "^0.4.1",
     "redis": "^3.1.2",
