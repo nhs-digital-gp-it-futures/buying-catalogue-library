@@ -2,6 +2,7 @@ import express from 'express';
 import request from 'supertest';
 import { authenticationRoutes } from './index';
 import { FakeAuthProvider } from '../../test-utils/fakeAuthProvider';
+import { consentCookieName } from '../../config';
 
 const setupTestApp = (mockLogoutMethod) => {
   const app = express();
@@ -91,21 +92,41 @@ describe('GET /signout-callback-oidc', () => {
   });
 
   it('should clear cookies', async () => {
-    const expectedClearedCookies = 'cookie1=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    const cookieName = 'cookie1';
+    const expectedClearedCookies = `${cookieName}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 
     const mockLogoutMethod = jest.fn().mockImplementation(() => Promise.resolve({}));
     const { app, router, authProvider } = setupTestApp(mockLogoutMethod);
+    const agent = request.agent(app);
 
     authenticationRoutes({
       router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path', logger: mockLogger,
     });
 
-    return request(app)
+    return agent
       .get('/signout-callback-oidc')
-      .set('Cookie', ['cookie1=cookie1value'])
+      .set('Cookie', [`${cookieName}=cookie1value`])
       .expect(302)
-      .then((res) => {
-        expect(res.headers['set-cookie'].includes(expectedClearedCookies)).toEqual(true);
-      });
+      .expect('set-cookie', expectedClearedCookies);
+  });
+
+  xit('should not clear the consent cookie', async () => {
+    const consentCookie = `${consentCookieName}=foo`;
+    const expectedCookies = `${consentCookie}; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+
+    const mockLogoutMethod = jest.fn().mockImplementation(() => Promise.resolve({}));
+    const { app, router, authProvider } = setupTestApp(mockLogoutMethod);
+    const agent = request.agent(app);
+
+    authenticationRoutes({
+      router, authProvider, tokenType: 'id', logoutRedirectPath: 'some-logout-path', logger: mockLogger,
+    });
+
+    // TODO: determine why set-cookie header field is undefined
+    return agent
+      .set('Cookie', [consentCookie])
+      .get('/signout-callback-oidc')
+      .expect(302)
+      .expect('set-cookie', expectedCookies);
   });
 });
