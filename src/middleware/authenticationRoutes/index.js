@@ -1,3 +1,5 @@
+import config from '../../config';
+
 export const extractAccessToken = ({ req, tokenType }) => req.session
   && req.session.accessToken && req.session.accessToken[`${tokenType}_token`];
 
@@ -28,7 +30,11 @@ export const authenticationRoutes = ({
     if (req.headers.cookie) {
       req.headers.cookie.split(';')
         .map((cookie) => cookie.split('=')[0])
-        .forEach((cookieKey) => res.clearCookie(cookieKey));
+        .forEach((cookieKey) => {
+          if (!cookieKey === config.consentCookieName) {
+            res.clearCookie(cookieKey);
+          }
+        });
     }
 
     res.redirect(logoutRedirectPath);
