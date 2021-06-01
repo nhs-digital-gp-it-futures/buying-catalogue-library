@@ -1,4 +1,4 @@
-import config from '../../config';
+import { consentCookieName } from '../../config';
 
 export const extractAccessToken = ({ req, tokenType }) => req.session
   && req.session.accessToken && req.session.accessToken[`${tokenType}_token`];
@@ -30,10 +30,9 @@ export const authenticationRoutes = ({
     if (req.headers.cookie) {
       req.headers.cookie.split(';')
         .map((cookie) => cookie.split('=')[0])
+        .filter((c) => c !== consentCookieName)
         .forEach((cookieKey) => {
-          if (!cookieKey === config.consentCookieName) {
-            res.clearCookie(cookieKey);
-          }
+          res.clearCookie(cookieKey);
         });
     }
 
