@@ -58,6 +58,10 @@ describe('GET /logout', () => {
 });
 
 describe('GET /signout-callback-oidc', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
   it('should redirect to "some-logout-path"', async () => {
     const mockLogoutMethod = jest.fn().mockImplementation(() => Promise.resolve({}));
     const { app, router, authProvider } = setupTestApp(mockLogoutMethod);
@@ -91,8 +95,8 @@ describe('GET /signout-callback-oidc', () => {
       });
   });
 
-  it('should clear cookies', async () => {
-    const cookieName = 'cookie1';
+  it('should clear the token cookie', async () => {
+    const cookieName = 'token';
     const expectedClearedCookies = `${cookieName}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 
     const mockLogoutMethod = jest.fn().mockImplementation(() => Promise.resolve({}));
@@ -111,7 +115,7 @@ describe('GET /signout-callback-oidc', () => {
   });
 
   xit('should not clear the consent cookie', async () => {
-    const consentCookie = `${consentCookieName}=foo`;
+    const consentCookie = `${consentCookieName}=true`;
     const expectedCookies = `${consentCookie}; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 
     const mockLogoutMethod = jest.fn().mockImplementation(() => Promise.resolve({}));
