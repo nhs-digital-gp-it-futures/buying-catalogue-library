@@ -30,7 +30,7 @@ export const authenticationRoutes = ({
     if (req.headers.cookie) {
       req.headers.cookie.split(';')
         .map((cookie) => cookie.split('=')[0])
-        .filter((c) => c !== consentCookieName)
+        .filter((c) => c.trim() !== consentCookieName)
         .forEach((cookieKey) => {
           res.clearCookie(cookieKey);
         });
