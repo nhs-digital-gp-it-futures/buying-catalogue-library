@@ -1,6 +1,6 @@
 {
   "name": "buying-catalogue-library",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "A library for buying-catalogue front end apps",
   "main": "lib/index.js",
   "scripts": {
@@ -19,20 +19,15 @@
   "dependencies": {
     "@babel/cli": "^7.14.5",
     "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.10",
     "connect-redis": "^6.0.0",
-    "eslint": "^7.28.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.4",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "jest": "^27.0.4",
     "openid-client": "^4.7.4",
     "passport": "^0.4.1",
-    "redis": "^3.1.2",
-    "supertest": "^6.1.3"
+    "redis": "^3.1.2"
   },
   "files": [
     "lib/*"
@@ -46,5 +41,12 @@
   "bugs": {
     "url": "https://github.com/nhs-digital-gp-it-futures/buying-catalogue-library/issues"
   },
-  "homepage": "https://github.com/nhs-digital-gp-it-futures/buying-catalogue-library#readme"
+  "homepage": "https://github.com/nhs-digital-gp-it-futures/buying-catalogue-library#readme",
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "jest": "^27.0.6",
+    "supertest": "^6.1.3"
+  }
 }
