@@ -1,6 +1,6 @@
 {
   "name": "buying-catalogue-library",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "description": "A library for buying-catalogue front end apps",
   "main": "lib/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "dependencies": {
     "@babel/cli": "^7.15.4",
     "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
     "axios": "^0.21.4",
     "cheerio": "^1.0.0-rc.10",
     "connect-redis": "^6.0.0",
@@ -46,7 +46,7 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
-    "jest": "^27.1.1",
+    "jest": "^27.2.0",
     "supertest": "^6.1.6"
   }
 }
