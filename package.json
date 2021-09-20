@@ -1,6 +1,6 @@
 {
   "name": "buying-catalogue-library",
-  "version": "1.5.9",
+  "version": "1.5.10",
   "description": "A library for buying-catalogue front end apps",
   "main": "lib/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "author": "Fawad Ali",
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.15.4",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
     "axios": "^0.21.4",
