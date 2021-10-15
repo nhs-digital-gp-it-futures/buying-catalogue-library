@@ -1,6 +1,6 @@
 {
   "name": "buying-catalogue-library",
-  "version": "1.5.12",
+  "version": "1.5.13",
   "description": "A library for buying-catalogue front end apps",
   "main": "lib/index.js",
   "scripts": {
@@ -25,9 +25,10 @@
     "connect-redis": "^6.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "openid-client": "^4.9.0",
+    "openid-client": "^4.9.1",
     "passport": "^0.5.0",
-    "redis": "^3.1.2"
+    "redis": "^3.1.2",
+    "supertest": "^6.1.6"
   },
   "files": [
     "lib/*"
@@ -43,10 +44,9 @@
   },
   "homepage": "https://github.com/nhs-digital-gp-it-futures/buying-catalogue-library#readme",
   "devDependencies": {
-    "eslint": "^8.0.0",
+    "eslint": "^8.0.1",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.2",
-    "jest": "^27.2.5",
-    "supertest": "^6.1.6"
+    "jest": "^27.2.5"
   }
 }
